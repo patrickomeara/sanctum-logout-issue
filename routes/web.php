@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,6 +19,28 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('quick-login', function () {
+    Auth::loginUsingId(1);
+
+    return redirect('/dashboard');
+});
+
+Route::middleware(['auth', 'auth.session'])->group(function () {
+    Route::post('password', function (Request $request) {
+        $request->user()->update([
+            'password' => Hash::make($request->password)
+        ]);
+
+        Auth::logoutOtherDevices($request->password);
+
+        return $request->user()->password;
+    });
+
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->middleware(['verified'])->name('dashboard');
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -24,10 +49,6 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
