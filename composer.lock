@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2924815be3226aabd44c7bd30b46cad0",
+    "content-hash": "682d37575eac72399c25152c76049ad3",
     "packages": [
         {
             "name": "brick/math",
@@ -1296,16 +1296,16 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v3.2.5",
+            "version": "dev-ensure-device-has-not-been-logged-out",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel/sanctum.git",
-                "reference": "8ebda85d59d3c414863a7f4d816ef8302faad876"
+                "url": "https://github.com/patrickomeara/sanctum.git",
+                "reference": "fc7c77e7141c5949fc3d66acc333e00984fa8a31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/8ebda85d59d3c414863a7f4d816ef8302faad876",
-                "reference": "8ebda85d59d3c414863a7f4d816ef8302faad876",
+                "url": "https://api.github.com/repos/patrickomeara/sanctum/zipball/fc7c77e7141c5949fc3d66acc333e00984fa8a31",
+                "reference": "fc7c77e7141c5949fc3d66acc333e00984fa8a31",
                 "shasum": ""
             },
             "require": {
@@ -1338,7 +1338,11 @@
                     "Laravel\\Sanctum\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Laravel\\Sanctum\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -1358,7 +1362,7 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
-            "time": "2023-05-01T19:39:51+00:00"
+            "time": "2023-08-11T23:11:09+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -8383,7 +8387,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "laravel/sanctum": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
