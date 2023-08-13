@@ -21,4 +21,12 @@ Route::middleware(['auth:sanctum'])
         Route::get('user', function (Request $request) {
             return $request->user();
         });
+
+        Route::post('password', function (Request $request) {
+            $request->user()->update([
+                'password' => Hash::make($request->password)
+            ]);
+
+            return $request->user()->password;
+        });
     });

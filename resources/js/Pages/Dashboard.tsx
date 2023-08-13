@@ -8,6 +8,7 @@ import { useState } from 'react';
 export default function Dashboard({ auth }: PageProps) {
     const [responseCode, setResponseCode] = useState<number>();
     const [passwordHash, setPasswordHash] = useState<string>();
+    const [sanctumPasswordHash, setSanctumPasswordHash] = useState<string>();
 
     const makeSanctumRequest = () => {
         window.axios.get('/api/user').then(response => {
@@ -29,6 +30,18 @@ export default function Dashboard({ auth }: PageProps) {
         });
     };
 
+    const changePasswordViaSanctumRequest = () => {
+        window.axios.post('/api/password', {
+            current_password: 'password',
+            password: 'password',
+            password_confirmation: 'password'
+        }).then(response => {
+            setSanctumPasswordHash(response.data);
+        }).catch(error => {
+            setSanctumPasswordHash(error.response.data.message);
+        });
+    }
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -49,6 +62,11 @@ export default function Dashboard({ auth }: PageProps) {
                         <div className="p-6 text-gray-900">
                             <SecondaryButton onClick={changePassword}>Change Password</SecondaryButton>
                             Password hash: {passwordHash}
+                        </div>
+
+                        <div className="p-6 text-gray-900">
+                            <SecondaryButton onClick={changePasswordViaSanctumRequest}>Change Password via Sanctum Request</SecondaryButton>
+                            Password hash: {sanctumPasswordHash}
                         </div>
                     </div>
                 </div>
