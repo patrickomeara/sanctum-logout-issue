@@ -9,7 +9,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.6.3",
         "laravel/framework": "^10.10",
-        "laravel/sanctum": "^3.2",
+        "laravel/sanctum": "dev-ensure-device-has-not-been-logged-out",
         "laravel/tinker": "^2.8",
         "tightenco/ziggy": "^1.0"
     },
@@ -24,6 +24,12 @@
         "spatie/laravel-ignition": "^2.0",
         "spatie/ray": "^1.37"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/patrickomeara/sanctum"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
