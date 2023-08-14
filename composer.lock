@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2924815be3226aabd44c7bd30b46cad0",
+    "content-hash": "d052604eb6f4a98c9f63a4bc46308ce4",
     "packages": [
         {
             "name": "brick/math",
@@ -1048,16 +1048,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.18.0",
+            "version": "dev-authenticate-session-in-sanctum",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel/framework.git",
-                "reference": "9d41928900f7ecf409627a7d06c0a4dfecff2ea7"
+                "url": "https://github.com/patrickomeara/framework.git",
+                "reference": "82ad8338f03020461a5a1af484be58b3c922301d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9d41928900f7ecf409627a7d06c0a4dfecff2ea7",
-                "reference": "9d41928900f7ecf409627a7d06c0a4dfecff2ea7",
+                "url": "https://api.github.com/repos/patrickomeara/framework/zipball/82ad8338f03020461a5a1af484be58b3c922301d",
+                "reference": "82ad8338f03020461a5a1af484be58b3c922301d",
                 "shasum": ""
             },
             "require": {
@@ -1224,7 +1224,14 @@
                     ]
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "files": [
+                    "tests/Database/stubs/MigrationCreatorFakeMigration.php"
+                ],
+                "psr-4": {
+                    "Illuminate\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -1244,7 +1251,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-08-08T14:30:38+00:00"
+            "time": "2023-08-13T23:45:05+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -8381,9 +8388,18 @@
             "time": "2021-07-28T10:34:58+00:00"
         }
     ],
-    "aliases": [],
+    "aliases": [
+        {
+            "package": "laravel/framework",
+            "version": "dev-authenticate-session-in-sanctum",
+            "alias": "10.18",
+            "alias_normalized": "10.18.0.0"
+        }
+    ],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "laravel/framework": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
