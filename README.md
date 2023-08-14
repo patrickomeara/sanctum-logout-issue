@@ -17,15 +17,4 @@ Changing the password in one browser, allows you to still make sanctum requests 
 
 ### Branch `auth.session`
 
-Here you will see the `auth.session` middleware to sanctum endpoints returns 500 errors.
-
-We can add macros for the missing methods for debugging purposes, but this middleware is not suitable here, as it will try to re write the password hash when it is missing. 
-
-```php
-        RequestGuard::macro('viaRemember', fn () => false);
-        RequestGuard::macro('logoutCurrentDevice', fn () => false);
-```
-
-### Branch `ensure-not-logged-out`
-
-Here you will see that changing the password in one browser, will still allow you to make sanctum requests in the browser, but not in the other. You are also logged out in the other browser when refreshing.
+Now when changing the password in any guard, the other session will be logged out of all guards.
